@@ -3,6 +3,7 @@
 
 setwd("Chapter3")
 rm(list = ls())
+dir.create("CYD/output/figures")
 
 library(tidyverse)
 library(Hmisc)
@@ -19,8 +20,8 @@ path_s = "CYD/output/severe/M9/" # (M10 in plots but started fitting from M0)
 # Data 
 VE = readRDS(paste0(path, "VE.RDS"))
 AR = readRDS(paste0(path, "AR.RDS"))
-VE_sev = readRDS(paste0(path, "VE.RDS"))
-AR_sev = readRDS(paste0(path, "AR.RDS"))
+VE_sev = readRDS(paste0(path_s, "VE.RDS"))
+AR_sev = readRDS(paste0(path_s, "AR.RDS"))
 VCD =  readRDS("CYD/data/processed/cases_stan_format.RDS")
 
 # colours 
@@ -43,7 +44,6 @@ theme_set(
 AR_data = lapply(VCD, calc_CYD_attack_rates)
 AR_model = extract_CYD_model_results(AR)  
 AR_sev_model = extract_CYD_model_results(AR_sev)  
-
 
 # plot attack rates ------------------------------------------------------------
 # plot symp attack rate by serotype and trial arm
@@ -301,7 +301,6 @@ ggsave(
 
 # plot fit compared to SA ------------------------------------------------------
 cols = c("#67A9CF", "#C51B8A", "#99CC99", "#FFCC99")
-
 
 # Data 
 SA = readRDS("CYD/output/SA1/VE.RDS")

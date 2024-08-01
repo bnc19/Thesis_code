@@ -2,6 +2,7 @@
 # vaccine efficacy estimates
 
 setwd("Chapter3")
+dir.create("BUT/output/figures")
 rm(list=ls())
 
 # load functions 
@@ -34,18 +35,13 @@ path = "BUT/output/M7/"
 # Data 
 VE = readRDS(paste0(path, "VE.RDS"))
 AR = readRDS(paste0(path, "AR.RDS"))
-serotype_serostatus_cases = read_excel("BUT/data/raw/cases.xlsx")
-age_cases = read_excel("BUT/data/raw/cases.xlsx", sheet = 2)
-
-# Tidy data 
-serotype_serostatus_cases = factor_BUT_cases(serotype_serostatus_cases)
-age_cases = factor_BUT_cases(age_cases)
+cases = readRDS("BUT/data/processed/cases_stan_format.RDS")
 
 # plot attack rates 
 # add aggregated populations to data and calculate attack rates
 
-AR_age_data = calc_BUT_attack_rates(age_cases)
-AR_serotype_data = calc_BUT_attack_rates(serotype_serostatus_cases)
+AR_age_data = calc_BUT_attack_rates(cases$Sy_BVJ)
+AR_serotype_data = calc_BUT_attack_rates(cases$Sy_BVK)
 AR_model = extract_BUT_model_results(AR)
 
 # plot serotype serostatus attack rate 

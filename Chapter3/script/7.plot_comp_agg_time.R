@@ -4,6 +4,7 @@
 setwd("Chapter3")
 rm(list = ls())
 
+dir.create("compare_vaccines/figures")
 source("compare_vaccines/R/plotting_functions.R")
 library(tidyverse)
 n = 500
@@ -24,7 +25,7 @@ theme_set(
       legend.margin = margin(0, 0, 0, 0)))
 
 
-TAK_file = "TAK/output/M32/VE.RDS"
+TAK_file = "/Users/bethancracknelldaniels/Desktop/R projects/Thesis_code/Chapter2/output/M32/VE.RDS"
 CYD_file = "CYD/output/M12/VE.RDS"
 BUT_file = "BUT/output/M7/VE.RDS"
 

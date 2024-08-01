@@ -75,7 +75,6 @@ out_CYD_sev = tidy_post_CYD_sev %>%
 
 write.csv(out_CYD_sev, "CYD/output/severe/M9/posterior_formatted.csv")  
 
-
 # Format Butantan-DV posterior distribution for table in thesis  
 
 # source data 
@@ -106,3 +105,4 @@ out_BUT = tidy_post_BUT %>%
 
 
 write.csv(out_BUT, "BUT/output/M7/posterior_formatted.csv")  
+

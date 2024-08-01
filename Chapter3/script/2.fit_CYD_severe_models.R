@@ -8,9 +8,12 @@
 #    paper. 
 # ------------------------------------------------------------------------------
 
-# source functions 
+
 setwd("Chapter3")
 rm(list = ls())
+dir.create("CYD/output/severe")
+
+# source functions 
 file.sources = paste0("CYD/R/", list.files(path = "CYD/R/"))
 sapply(file.sources, source)
 n_it = 1000 # change to 10000 to recreate thesis results 

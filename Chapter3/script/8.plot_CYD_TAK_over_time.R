@@ -19,7 +19,7 @@ theme_set(
 
 
 # files 
-TAK_file = "TAK/output/M32/VE.RDS"
+TAK_file = "/Users/bethancracknelldaniels/Desktop/R projects/Thesis_code/Chapter2/output/M32/VE.RDS"
 CYD_file = "CYD/output/M12/VE.RDS"
 
 set.seed(123)
