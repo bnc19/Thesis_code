@@ -172,8 +172,5 @@ saveRDS(WAIC, file = paste0(file_path, "/WAIC.RDS"))
   n = which(grepl( "n" , names( fit_ext ) ))
   n_out = fit_ext[n]%>%  as.data.frame()
   saveRDS(n_out, paste0(file_path, "/n.RDS"))
-
-  plot_CYD_output(file_path = file_path,
-                  severe = severe)
   
 }

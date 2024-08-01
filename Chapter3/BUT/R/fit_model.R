@@ -179,9 +179,5 @@ n = which(grepl( "n" , names( fit_ext ) ))
 n_out = fit_ext[n]%>%  as.data.frame()
 saveRDS(n_out, paste0(file_path, "/n.RDS"))
 
-plot_BUT_output(file_path = file_path,
-                cases = cases,
-                include_beta = include_beta)
-  
 
 }
