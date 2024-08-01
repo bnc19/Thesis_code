@@ -519,7 +519,6 @@ model {
   gamma ~ normal(0.46,0.2);  // prob secondary
   rho ~ normal(2.44,0.40);   // RR secondary
   phi ~ normal(0.25,0.1);
-  epsilon ~ normal(1,1);
   L ~ normal(L_mean,L_sd);
   w ~ normal(1,2);
   lc[1,] ~ normal(5.18,1);
