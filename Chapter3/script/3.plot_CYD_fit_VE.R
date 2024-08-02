@@ -299,7 +299,7 @@ ggsave(
 
 
 
-# plot fit compared to SA ------------------------------------------------------
+# plot VE compared to SA on CYD cut-off period --------------------------------
 cols = c("#67A9CF", "#C51B8A", "#99CC99", "#FFCC99")
 
 # Data 
@@ -345,3 +345,7 @@ ggsave(
   units = "cm",
   dpi = 600
 )
+
+
+# plot VE compared to SA on symptomatic probabilities ---------------------------
+
