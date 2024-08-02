@@ -107,3 +107,26 @@ run_model (
   hosp = read.csv("data/processed/hosp_data.csv") ,
   mu =  array(read.csv("data/processed/n0_new.csv")$mean, dim = c(2, 4))
 )
+
+
+# SA on priors used for probabilities of symptoms 
+
+run_model (
+  uniform = 1,
+  mono_lc_MU = 2,
+  include_pK3 = 0,
+  rho_K = 0,
+  include_beta = 3,
+  mono_lc_SN = 1,
+  tau_K = 1,
+  MU_test_SN = 1,
+  folder = "final/M32_uniform",
+  n_it = n_it,
+  adapt_delta = 0.75,
+  stan_model = "TAK_model.stan",
+  baseline_SP = read.csv("data/processed/seropositive_by_age_baseline.csv"),
+  VCD =  read.csv("data/processed/vcd_data.csv"),
+  hosp = read.csv("data/processed/hosp_data.csv") ,
+  mu =  array(read.csv("data/processed/n0_new.csv")$mean, dim = c(2, 4)),
+  plot = F
+)

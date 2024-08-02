@@ -30,6 +30,7 @@ data{
    array[D] int<lower=0> pop_HOSP_D ; // hosp pop over time 
    
    // FLAGS
+   int<lower = 0, upper = 1> uniform;           // uniform priors on probabilities of reporting (T/F)
    int<lower = 0, upper = 1> include_pK2;      // include serotype specific p? (T/F)
    int<lower = 0, upper = 1> include_eps;      // include enhanced secondary hosp? (T/F)
    int<lower = 0, upper = 2> include_beta;     // 0 if no age-specific nc50, 1 = change age groups 1 for both outcomes, 2 = age grp 1 sep for each outcome
@@ -722,10 +723,17 @@ model {
   scale_FOI ~ normal(1,2); 
   theta ~ dirichlet(rep_vector(1.0, K));
   
+  if(uniform == 0){ // use TAK posterior 
   gamma ~ normal(0.46,0.2);  // prob secondary
   rho ~ normal(2.44,0.40);   // RR secondary
-  delta ~ normal(0.25,0.10);
   phi ~ normal(0.25,0.1);
+  } else {
+  gamma ~ uniform(0,1);  // prob secondary
+  rho ~ normal(2,2);   // RR secondary
+  phi ~ uniform(0,1);
+  }
+  
+  delta ~ normal(0.25,0.10);
   epsilon ~ normal(1,1);
   
   L ~ normal(L_mean,L_sd);

@@ -25,6 +25,7 @@ data{
    array[B,V,D] int<lower=0> pop_BVD;     // pop
    array[B,V] int<lower=0> N_VCD_BV5;     // cases in t_5 (not age-specific)
    // FLAGS
+   int<lower = 0, upper = 1> uniform;           // uniform priors on probabilities of reporting (T/F)
    int<lower = 0, upper = 1> include_pK3;      // include serotype specific p? (T/F)
    int<lower = 0, upper = 1> include_eps;      // include enhanced secondary hosp? (T/F)
    int<lower = 0, upper = 3> include_beta;     // include age-specific nc50?: 1= change age groups 1 & 2 for both outcomes / 2 = only age grp 1, sep for each outcome / 3 = only age grp 1 for both outcomes 
@@ -778,10 +779,19 @@ model {
   }
   
   for(k in 1:K) lambda_D[k, ] ~ lognormal(-7,2);
+  
+    if(uniform == 0){ // use TAK posterior 
   gamma ~ normal(0.85,0.2);  // prob secondary
   rho ~ normal(1.97,0.40);   // RR secondary
-  delta ~ normal(0.25,0.10);
   phi ~ normal(0.25,0.05);
+  } else {
+  gamma ~ uniform(0,1);  // prob secondary
+  rho ~ normal(2,2);   // RR secondary
+  phi ~ uniform(0,1);
+  }
+  
+
+  delta ~ normal(0.25,0.10);
   epsilon ~ normal(1,1);
   L ~ normal(L_mean,L_sd);
   tau ~ normal(1,1);

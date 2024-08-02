@@ -16,7 +16,6 @@ n_it = 1000 # change to 10000 to recreate results
 
 # M32 - as M30 MU offset from MO -------------------------------------------------
 run_model (
-  diagnostics = T,
   BF = T,
   mono_lc_MU = 2,
   include_pK3 = 0,
@@ -33,7 +32,8 @@ run_model (
   VCD =  read.csv("data/processed/vcd_data.csv"),
   hosp = read.csv("data/processed/hosp_data.csv") ,
   mu =  array(read.csv("data/processed/n0_new.csv")$mean, dim = c(2, 4)),
-  plot = F
+  plot = F,
+  diagnostics = F
 )
 
 # 
